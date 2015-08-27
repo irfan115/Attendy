@@ -6,12 +6,12 @@ from accounts.models import Teacher
 class TeacherSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Teacher
-		fields = ('pk','first_name','last_name','email')
+		fields = ('id','first_name','last_name','email')
 
 class BatchSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Batch
-		fields = ('pk', 'name', 'shift', 'session')
+		fields = ('id', 'name', 'shift', 'session')
 
 
 class StudentSerializer(serializers.ModelSerializer):
@@ -24,21 +24,21 @@ class CourseSerializer(serializers.ModelSerializer):
 	teacher = TeacherSerializer(many=True, read_only=True)
 	class Meta:
 		model = Course
-		fields = ('pk','course_name','course_code','teacher',)
+		fields = ('course_name','course_code','teacher')
 
 class StudentClassSerializer(serializers.ModelSerializer):
 	
 	batch = BatchSerializer(read_only=True)
 	#student = StudentSerializer(many=True, read_only=True)
-	course = CourseSerializer(read_only=True)
+	#course = CourseSerializer(read_only=True)
 	class Meta:
 		model = StudentClass
-		fields = ('pk','batch', 'course', 'start_timing','end_timing', 'class_days')
+		fields = ('id','batch', 'start_timing','end_timing', 'class_days')
 
 class StudentSearchSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Student
-		fields = ('pk','name', 'rollno')
+		fields = ('id','name', 'rollno')
 
 
 class AttendenceSaveSerializer(serializers.ModelSerializer):

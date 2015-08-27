@@ -60,7 +60,7 @@ class Teacher(AbstractBaseUser, PermissionsMixin):
         (ADMIN, _('Admin'))
     )
     user_role = models.PositiveSmallIntegerField(verbose_name=_("User Role"), choices=USER_ROLES, default=TEACHER,
-                                                 blank=False, null=False, max_length=10)
+                                                 blank=False, null=False)
     objects = AuthUserManager()
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []

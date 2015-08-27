@@ -12,7 +12,7 @@ class Batch(models.Model):
 	)
 
 	name    = models.CharField(max_length=120)
-	shift   = models.PositiveIntegerField(max_length=20, choices=shifts)
+	shift   = models.PositiveIntegerField(choices=shifts)
 	session = models.CharField(max_length=50)
 
 	updated = models.DateTimeField(auto_now=True)
@@ -29,7 +29,7 @@ class Student(models.Model):
 	name = models.CharField(max_length=50)
 	rollno = models.IntegerField()
 
-	updated = models.DateTimeField(auto_now=True)
+	dated = models.DateTimeField(auto_now=True)
 	created = models.DateTimeField(auto_now_add=True)
 
 	def __unicode__(self):
